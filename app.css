@@ -1,0 +1,22 @@
+body {
+    background-color: white
+    margin: 0
+}
+
+nav#main-nav {
+    background-color: rgb(209, 255, 192);
+}
+
+#main-nav a {
+    padding: 1em;
+    display: inline-block;
+    color: white;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    transition: all ease 300ms;
+}
+
+#main-nav a:hover {
+    background-color: rgb(173, 230, 157);
+}
+
