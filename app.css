@@ -1,10 +1,9 @@
 body {
     background-color: white
-    margin: 0
 }
 
 nav#main-nav {
-    background-color: rgb(209, 255, 192);
+    background-color: rgb(205, 127, 37);
 }
 
 #main-nav a {
@@ -12,11 +11,16 @@ nav#main-nav {
     display: inline-block;
     color: white;
     font-size: 1.2rem;
-    font-family: sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     transition: all ease 300ms;
+    text-decoration: none;
 }
 
 #main-nav a:hover {
-    background-color: rgb(173, 230, 157);
+    background-color: rgb(199, 162, 107);
 }
 
+img:hover {
+    transition: all ease 250ms;
+    border: double, 8px;
+}
