@@ -3,24 +3,83 @@ body {
 }
 
 nav#main-nav {
-    background-color: rgb(205, 127, 37);
+    background-color: rgb(238, 145, 39);
 }
 
-#main-nav a {
+#main a:hover {
+    background-color: rgb(248, 212, 159);
+    transition: all ease 300ms;
+}
+
+img{
+    border-radius: 50px;
+}
+
+img:hover {
+    transition: all ease 155ms;
+    box-shadow: 5px 5px orange;
+}
+
+#main-nav a{
+    background-color: rgb(95, 130, 161);
     padding: 1em;
     display: inline-block;
     color: white;
     font-size: 1.2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    transition: all ease 300ms;
+    font-family:'Lucida Sans'
     text-decoration: none;
 }
 
-#main-nav a:hover {
-    background-color: rgb(199, 162, 107);
+html {
+  scroll-behavior: smooth;
 }
 
-img:hover {
-    transition: all ease 250ms;
-    border: double, 8px;
+/* Base styles for the page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+ 
+header {
+    background: orange;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+ 
+.content-section {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+ 
+.back-to-top {
+    
+    position: fixed;
+    bottom: 2rem; 
+    right: 2rem; 
+    z-index: 100; 
+ 
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%; 
+
+    
+    background: orange; 
+    color: white; 
+    text-align: center;
+    line-height: 3rem;
+    font-size: 1.5rem;
+
+    text-decoration: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.137); 
+
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+ 
+.back-to-top:hover {
+    background: #2980b9; 
+    transform: scale(1.1);
 }
