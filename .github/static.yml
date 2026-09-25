@@ -1,85 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="app.css">
-</head>
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
-<body>
-    <div id="top"></div>
-  
-    <header class="top">
-        <section>
-            <nav id="main-nav" role="Main Navigation">
-                <ul>
-                    <a href="index.html">Home</a>
-                    <a href="dove.html">The White-Throated Ground Dove</a>
-                    <a href="monitor.html">The Emerald Tree Monitor</a>
-                    <a href="scissortail.html">The Scissortail Rasbora</a>
-                    <a href="meerkat.html">The Meerkat</a>
-                </ul>
-            </nav>
-            <h1>ANIMAL DOSSIER</h1>
-            <p class="tagline">Learn about a few interesting animals!</p>
-        </section>
-    </header>
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
 
-    <main class="middle">
-        <section id="dove">
-            <h3>The White Throated Ground Dove</h3>
-            <p>The White Throated Ground Dove is a small bird native to the Mariana Islands and Guam.</p>           
-            <figure>
-                <a href="dove.html" class="hover-image-container">
-                    <img src="https://fcz.org/wp-content/uploads/2026/08/Dove_260812_09.jpg" alt="A white throated ground dove on a branch" width="500" height="600">
-                    <span class="hover-overlay">The White-Throated Ground Dove</span>
-                </a>
-                <figcaption><small>Photo by FCZ</small></figcaption>
-            </figure>
-        </section>
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-        <section id="emerald-tree-monitor">
-            <h3>Emerald Tree Monitor</h3>
-            <p>The Emerald Tree Monitor is a species native to New Guinea.</p>
-            <figure>
-                <a href="monitor.html" class="hover-image-container">
-                    <img src="https://fcz.org/wp-content/uploads/2025/02/Green_Tree_Monitor.jpg" alt="A Green Tree Monitor" width="500" height="600">
-                    <span class="hover-overlay">The Emerald Tree Monitor</span>
-                </a>
-                <figcaption><small>Photo by FCZ</small></figcaption>
-            </figure>
-        </section>
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-        <section id="scissortail">
-            <h3>Scissortail Rasbora</h3>
-            <p>The Scissortail Rasbora is a fish native to Cambodia.</p> 
-            <figure>
-                <a href="scissortail.html" class="hover-image-container">
-                    <img src="https://fcz.org/wp-content/uploads/2025/02/scissortail-rasbora.jpg" alt="A Scissortail Rasbora" width="500" height="600">
-                    <span class="hover-overlay">The Scissortail Rasbora</span>
-                </a>
-                <figcaption><small>Photo by FCZ</small></figcaption>
-            </figure>
-        </section>
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
-        <section id="meerkat">
-            <h3>Meerkat</h3>
-            <p>The Meerkat is a small mammal native to southern Africa.</p> 
-            <figure>
-                <a href="meerkat.html" class="hover-image-container">
-                    <img src="https://fcz.org/wp-content/uploads/2025/02/Meerkats_260824_04.jpg" alt="A Meerkat" width="500" height="600">
-                    <span class="hover-overlay">The Meerkat</span>
-                </a>
-                <figcaption><small>Photo by FCZ</small></figcaption>
-            </figure>
-        </section>
-
-        <a href="#top" class="back-to-top">↑</a>
-    </main>
-
-    <footer>
-        <small>&copy; 2026 Sky Yang</small>
-    </footer>
-</body>
-</html>
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
